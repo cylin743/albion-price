@@ -102,7 +102,7 @@ export default {
         tags:[
           { name: 'T4木材', type: 'info', value: 'T4_WOOD' },
         ],
-        optionsByItemClasses: optionsByItemClasses['STUFF'],
+        optionsByItemClasses: optionsByItemClasses['STUFF'].concat(optionsByItemClasses['SKILLBOOK']),
         classVal: "原生資源",
         optionsByItemType: optionsByItemType['RAW'],
         itemTypeValuesCht: result,
@@ -123,17 +123,20 @@ export default {
       onAdd(){
         let isIn = false;
         let name = `${this.levelVal}${this.typeVal}${this.enchantVal}`
-
+        let params = `${this.levelVal}_${this.type}`
+        if (this.enchantVal !== "" && this.enchantVal !== null){
+          params = `${params}_${this.enchantVal}`
+        }
+        if (optionsByItemClasses['SKILLBOOK'].includes(this.classVal)){
+          name = `${this.typeVal}`
+          params = `${this.type}`
+        }
         this.tags.forEach((item) => {
           if (item.name === name){
             isIn = true
           }
         });
         if (!isIn){
-          let params = `${this.levelVal}_${this.type}`
-          if (this.enchantVal !== "" && this.enchantVal !== null){
-              params = `${params}_${this.enchantVal}`
-          }
           this.tags.push({ name: name, type: 'info', value: params })
           this.search()
         }
@@ -150,6 +153,19 @@ export default {
         this.tags = this.tags.filter(tag => tag.name != event.name)
         console.log(this.tags)
         this.search()
+      },
+      extractString(input) {
+        var pattern = /(T\d+)_([A-Z]+)(_[A-Z]+)*(_LEVEL\d+@\d+)*/i
+        var match = pattern.exec(input)
+        console.log(match)
+        if (match !== null && match.length >= 2) {
+          var result = match[2]
+          if (match[3] !== undefined) {
+            result += match[3]
+          }
+          return result
+        }
+        return ''
       },
       search() {
             const self = this
@@ -182,7 +198,7 @@ export default {
                   minute: "2-digit",
                   second: "2-digit"
                 })
-                let enName = item.item_id.split("_")[1]
+                let enName = this.extractString(item.item_id)
                 item.item_id = item.item_id.replace(enName, this.itemTypeValuesCht[enName])
                 item.id = index
                 item.color = "#000000"

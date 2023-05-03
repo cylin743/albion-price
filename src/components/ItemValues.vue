@@ -1,7 +1,7 @@
 <script>
 const optionsByItemClasses={
     STUFF: ["","原生資源", "加工資源","材料"],
-    ITEM: ["","布質風帽","布質長袍","布質便鞋","皮革兜帽","皮革外套","皮革鞋子","金屬頭盔","金屬護甲","金屬靴子","配件"],
+    ITEM: ["布質風帽","布質長袍","布質便鞋","皮革兜帽","皮革外套","皮革鞋子","金屬頭盔","金屬護甲","金屬靴子","配件"],
     MAIN_WEAPON:["","斧頭","匕首","鎚子","戰爭手套","錘矛","鐵頭棍","長矛","劍","祕術法杖","詛咒法杖","火焰法杖","寒冰法杖","神聖法杖","自然法杖","弓","十字弓"],
     OFF_WEAPON:["","典籍","盾牌","火炬"],
     TOOL:["","十字鎬","鐮刀","剝皮刀","採石鎚","伐木斧","釣竿","破壞鎚"],
@@ -10,7 +10,7 @@ const optionsByItemClasses={
     FARM:["","農耕種子","農耕產品","生肉/熟食","幼崽動物","成長動物","坐騎"],
     WORKER:["","通用","種植者","漁夫","獵場看守者","造箭師","附魔師","傭兵","探礦者","砌石匠","修補匠","鐵匠","伐木匠"],
     FACTION:["","城市資源"],
-    SKILLBOOK:["","洞察之書","採集典籍"],
+    SKILLBOOK:["洞察之書"],
     TREASURE:["","任意奢侈品","Bridgewatch奢侈品","Fort Sterling奢侈品","Lymhurst奢侈品","Martlock奢侈品","Thetford奢侈品","Caerleon奢侈品"],
     TOKEN:["","水晶聯賽徽章",
       "--高級遠征代幣--","超渡亡靈","疑點重重的生意","採石場血案","瘋人濫伐",
@@ -590,6 +590,7 @@ const itemTypeValues = {
     "T1_山脈之心":"T1_FACTION_MOUNTAIN_TOKEN_1","T1_藤蔓之心":"T1_FACTION_SWAMP_TOKEN_1","T1_暗影之心":"T1_FACTION_CAERLEON_TOKEN_1",
   
     "T4_洞察之書":"T4_SKILLBOOK_STANDARD",
+    "洞察之書":"SKILLBOOK_STANDARD",
     "採礦匠典籍":"SKILLBOOK_GATHER_ORE","採收者典籍":"SKILLBOOK_GATHER_FIBER","剝皮匠典籍":"SKILLBOOK_GATHER_HIDE",
     "採石匠典籍":"SKILLBOOK_GATHER_ROCK","伐木匠典籍":"SKILLBOOK_GATHER_WOOD",
   
